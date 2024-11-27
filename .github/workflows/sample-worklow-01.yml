@@ -34,23 +34,31 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
   tf_init:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run a command
-        shell: bash
-        run: |
-          terraform init
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: '1.5.0'  # Specify the Terraform version if needed
+
+      - name: Terraform init
+        run: terraform init  # Initialize Terraform working directory
+
   tf_plan:
-    needs: tf_init 
+    needs: tf_init
     runs-on: ubuntu-latest
     steps:
-      - name: Run a command
-        shell: bash
-        run: |
-          cd ./
-          terraform plan       
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform plan
+        run: terraform plan
+        working-directory: ./main.tf  # Ensure it's the root directory
+      
