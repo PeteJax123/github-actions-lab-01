@@ -55,7 +55,10 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
 
+      - name: Checkout code
+        uses: actions/checkout@v4        
+
       - name: Terraform plan
         run: terraform plan
-        working-directory: "https://github.com/PeteJax123/github-actions-lab-01.git/"
+        working-directory: ./
       
