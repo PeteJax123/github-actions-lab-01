@@ -38,9 +38,11 @@ jobs:
   deploy: 
     runs-on: ubuntu-latest
     steps:
+      - name: Run a command
+        shell: bash
+        run: |
+          echo "Running script"    
       - name: Terraform init/plan
         uses: comu2e/tfnotify-composite-action@1.0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}        
-            
-                   
