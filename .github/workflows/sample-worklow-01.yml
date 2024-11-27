@@ -35,13 +35,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-deploy:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Terraform init/plan
-      uses: comu2e/tfnotify-composite-action@1.0.4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Terraform init/plan
+        uses: comu2e/tfnotify-composite-action@1.0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
