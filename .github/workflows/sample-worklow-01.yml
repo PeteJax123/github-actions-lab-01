@@ -35,7 +35,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  deploy:
+  tf_init:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,3 +45,13 @@ jobs:
         shell: bash
         run: |
           terraform init
+  tf_plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run a command
+        shell: bash
+        run: |
+          terraform plan ./main.tf       
