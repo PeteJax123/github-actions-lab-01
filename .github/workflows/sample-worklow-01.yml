@@ -48,14 +48,34 @@ jobs:
       - name: Terraform init
         run: terraform init  # Initialize Terraform working directory
 
-  tf_plan:
+  tf_jobs:
     needs: tf_init
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    permissions:
+      pull-requests: write
     steps:
-      - name: HashiCorp - Setup Terraform
-        uses: hashicorp/setup-terraform@v2.0.3
-        with:
-    # The hostname of a Terraform Cloud/Enterprise instance to place within the credentials block of the Terraform CLI configuration file. Defaults to `app.terraform.io`.
-          cli_config_credentials_hostname: app.terraform.io
+    - uses: actions/checkout@v4
+    - uses: hashicorp/setup-terraform@v3
+    
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
+    
+    - name: Terraform Init
+      id: init
+      run: terraform init
+    
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+    
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color
+      continue-on-error: true
           
       
