@@ -46,6 +46,7 @@ jobs:
         run: |
           terraform init
   tf_plan:
+    needs: tf_init 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
