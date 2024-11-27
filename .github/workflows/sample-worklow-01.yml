@@ -49,9 +49,6 @@ jobs:
     needs: tf_init 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Run a command
         shell: bash
         run: |
