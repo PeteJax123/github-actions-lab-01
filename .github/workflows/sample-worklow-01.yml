@@ -41,7 +41,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Terraform init/plan
-        uses: comu2e/tfnotify-composite-action@1.0.4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run a command
+        shell: bash
+        run: |
+          terraform init
