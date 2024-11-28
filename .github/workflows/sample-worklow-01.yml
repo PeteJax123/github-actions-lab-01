@@ -72,9 +72,9 @@ jobs:
         
       - name: Access Repository Variable
         run: | 
-          echo "The value of VARIABLE_01 is ${{ vars.VARIABLE_01 }}"
-          echo "The value of VARIABLE_01 is ${{ secrets.VARIABLE_01 }}"
-          echo "The value of VARIABLE_01 is ${{ env.VARIABLE_01 }}"
-          echo "The value of VARIABLE_01 is ${{ github.repository_variables.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is using vars : ${{ vars.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is using secrets :${{ secrets.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is using env :${{ env.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is using github.repository_variables :${{ github.repository_variables.VARIABLE_01 }}"
           
       
