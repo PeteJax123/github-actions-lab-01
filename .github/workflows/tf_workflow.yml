@@ -1,4 +1,4 @@
-name: CI
+name: aws_tf_workflow
 on:
   push:
     branches: [ "main" ]
