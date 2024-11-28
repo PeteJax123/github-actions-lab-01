@@ -71,6 +71,10 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Access Repository Variable
-        run: echo "The value of VARIABLE_01 is ${{ vars.VARIABLE_01 }}"
+        run: | 
+          echo "The value of VARIABLE_01 is ${{ vars.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is ${{ secrets.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is ${{ env.VARIABLE_01 }}"
+          echo "The value of VARIABLE_01 is ${{ github.repository_variables.VARIABLE_01 }}"
           
       
