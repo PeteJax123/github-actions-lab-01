@@ -1,4 +1,4 @@
-name: aws_tf_workflow
+name: CI
 on:
   push:
     branches: [ "main" ]
@@ -22,13 +22,13 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
 
-    # AWS Login - Configure AWS credentials from GitHub Secrets
+    # AWS Login - Configure AWS credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Add your AWS Access Key ID in GitHub Secrets
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Add your AWS Secret Access Key in GitHub Secrets
-        aws-region: "us-east-1"  # Change to your desired region (e.g., us-west-2, eu-west-1, etc.)
+        aws-region: "us-east-1"  # Change to your desired region
 
     - name: Terraform fmt
       id: fmt
@@ -47,3 +47,9 @@ jobs:
       id: plan
       run: terraform plan
       continue-on-error: true
+
+    # Apply Terraform Plan (auto-approve)
+    - name: Terraform Apply
+      id: apply
+      run: terraform apply -auto-approve
+      
