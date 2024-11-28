@@ -74,7 +74,7 @@ jobs:
         run: | 
           echo "The value of VARIABLE_01 is using vars : ${{ vars.VARIABLE_01 }}"
           echo "The value of REPO_SECRET_01 is using secrets :${{ secrets.REPO_SECRET_01 }}"
-          echo "The value of VARIABLE_01 is using env :${{ env.VARIABLE_01 }}"
-          echo "The value of VARIABLE_01 is using github.repository_variables :${{ github.repository_variables.VARIABLE_01 }}"
+          echo "The value of ENV_SECRET is using secrets :${{ secrets.ENV_SECRET_01 }}"
+          echo "The value of ENV_Variable is using vars :${{ vars.ENV_VAR_01 }}"
           
       
