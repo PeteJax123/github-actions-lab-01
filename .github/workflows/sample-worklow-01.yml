@@ -66,6 +66,7 @@ jobs:
 
   scripts_jobs:
     runs-on: ubuntu-latest
+    environment: env_test
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -74,6 +75,9 @@ jobs:
         run: | 
           echo "The value of VARIABLE_01 is using vars : ${{ vars.VARIABLE_01 }}"
           echo "The value of REPO_SECRET_01 is using secrets :${{ secrets.REPO_SECRET_01 }}"
+
+      - name: Access Envirnoment Variables
+        run: |
           echo "The value of ENV_SECRET is using secrets :${{ secrets.ENV_SECRET_01 }}"
           echo "The value of ENV_Variable is using vars :${{ vars.ENV_VAR_01 }}"
           
