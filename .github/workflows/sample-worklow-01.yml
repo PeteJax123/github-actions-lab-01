@@ -69,11 +69,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Use the environment variable
-        run: echo "The value of VARIABLE_01 is ${{ env.VARIABLE_01 }}"
-        env:
-          VARIABLE_01: ${{ secrets.VARIABLE_01 }}
-  
+        
+      - name: Access Repository Variable
+        run: echo "The value of VARIABLE_01 is ${{ github.repository_variables.VARIABLE_01 }}"
           
       
