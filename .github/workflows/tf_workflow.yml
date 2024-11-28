@@ -1,4 +1,4 @@
-name: CI
+name: tf_workflow.yml
 on:
   push:
     branches: [ "main" ]
